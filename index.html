@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Care Plan Pre-Assessment (Multi-Step)</title>
+  <title>Care Plan Pre-Assessment</title>
   <style>
     /* ---------- Basic Page & Body Styles ---------- */
     body {
@@ -11,11 +11,10 @@
       padding: 10px;
       font-family: Arial, sans-serif;
       color: #333;
-      /* Base desktop font size: 18px for better readability */
       font-size: 18px;
 
       /* Light background plus the ribbon image in the bottom-left corner */
-      background-color: #f7f9f4; /* Light greenish tint */
+      background-color: #f7f9f4;
       background-image: url("https://i.ibb.co/tpQ4Yh49/Greensleeves-Care-Brand-Ribbon-scaled.webp");
       background-repeat: no-repeat;
       background-position: bottom left;
@@ -36,7 +35,7 @@
       margin-right: 1rem;
     }
     .header-brand h1 {
-      font-size: 1.8rem; /* Larger heading text */
+      font-size: 1.8rem;
       color: #546038;
       margin: 0;
     }
@@ -55,7 +54,7 @@
       display: block;
     }
     .form-step h2 {
-      font-size: 1.4rem; /* Larger subheading text */
+      font-size: 1.4rem;
       margin-top: 0;
     }
 
@@ -64,7 +63,7 @@
       display: block;
       margin: 1rem 0 0.25rem;
       font-weight: bold;
-      font-size: 1rem; /* Slightly larger label text */
+      font-size: 1rem;
     }
     small {
       display: block;
@@ -72,7 +71,7 @@
       color: #555;
       margin-top: 0.1rem;
       margin-bottom: 0.5rem;
-      font-size: 0.95rem; /* Keep small text, but slightly bigger than default */
+      font-size: 0.95rem;
     }
     input[type="text"],
     input[type="date"],
@@ -88,7 +87,7 @@
     }
     input[type="checkbox"] {
       margin-right: 0.5rem;
-      transform: scale(1.2); /* Make checkboxes a bit bigger if you wish */
+      transform: scale(1.2);
     }
     /* read-only fields for Age & BMI so users can't overwrite them */
     #age,
@@ -108,7 +107,7 @@
       font-size: 1rem;
       border: none;
       border-radius: 4px;
-      background-color: #8b9a73; 
+      background-color: #8b9a73;
       color: #fff;
     }
     .btn-nav:hover {
@@ -127,7 +126,6 @@
     @media (max-width: 600px) {
       body {
         padding: 8px;
-        /* Slightly smaller font on very small screens to prevent overflow */
         font-size: 16px;
       }
       .header-brand {
@@ -187,6 +185,7 @@
       <input type="text" id="genderIdentity" name="genderIdentity" placeholder="Man/Woman/etc.">
 
       <label for="dob">Date of Birth</label>
+      <!-- No min/max constraints; you can manually type the year if needed -->
       <input type="date" id="dob" name="dob">
 
       <label for="age">Age (Auto-calc)</label>
@@ -294,7 +293,7 @@
       <textarea id="allergies" name="allergies" rows="3"></textarea>
 
       <label for="dietaryPreferences">Dietary Preferences &amp; Nutrition Needs</label>
-      <small>E.g., Vegetarian, Halal, Low-Salt. If bed-bound, note 90° posture for feeding.</small>
+      <small>E.g., Vegetarian, Halal, Low-Salt, etc.</small>
       <textarea id="dietaryPreferences" name="dietaryPreferences" rows="3"></textarea>
 
       <label for="emergencyInfo">Emergency Information &amp; Admission Decision</label>
@@ -302,11 +301,11 @@
       <textarea id="emergencyInfo" name="emergencyInfo" rows="3"></textarea>
 
       <label for="clinicalHistory">Clinical History &amp; Medical Conditions</label>
-      <small>List diagnoses, relevant treatments. e.g. Diabetes, Epilepsy, Parkinson’s, etc.</small>
+      <small>e.g. Diabetes, Epilepsy, Parkinson’s. Note relevant care plans if needed.</small>
       <textarea id="clinicalHistory" name="clinicalHistory" rows="3"></textarea>
 
       <label for="medicationList">Medication List</label>
-      <small>Type of medication, side effects, any food/drink to avoid. e.g. “Crushed with applesauce.”</small>
+      <small>Type of medication, side effects, any special instructions (time-sensitive, etc.).</small>
       <textarea id="medicationList" name="medicationList" rows="3"></textarea>
 
       <h3>Malnutrition Universal Screening Tool (MUST)</h3>
@@ -335,17 +334,85 @@
     <!-- ================= STEP 6: MANDATORY CARE PLAN SECTIONS ================= -->
     <div class="form-step" id="step-6">
       <h2>Step 6: Mandatory Care Plan Sections</h2>
-      <!-- ... fields as before ... -->
+      <label for="advancedPlanning">Advanced Planning / End of Life (EOL)</label>
+      <small>DNACPR or ReSPECT forms, funeral wishes, etc.</small>
+      <textarea id="advancedPlanning" name="advancedPlanning" rows="3"></textarea>
+
+      <label for="cognition">Cognition</label>
+      <small>Dementia, memory issues, how they prefer to communicate.</small>
+      <textarea id="cognition" name="cognition" rows="3"></textarea>
+
+      <label for="communication">Communication</label>
+      <small>Hearing/speech impairments, communication aids, etc.</small>
+      <textarea id="communication" name="communication" rows="3"></textarea>
+
+      <label for="continenceCare">Continence Care</label>
+      <small>Type/size of products, support needed, routines.</small>
+      <textarea id="continenceCare" name="continenceCare" rows="3"></textarea>
+
+      <label for="emotionalWellbeing">Emotional Well-being &amp; Mental Health</label>
+      <textarea id="emotionalWellbeing" name="emotionalWellbeing" rows="3"></textarea>
+
+      <label for="sexuality">Expressing Sexuality</label>
+      <small>Clothing, makeup, jewellery, hairdresser visits, etc.</small>
+      <textarea id="sexuality" name="sexuality" rows="3"></textarea>
+
+      <label for="lifeEnrichment">Life Enrichment &amp; Social Activities</label>
+      <small>Hobbies, interests, outings, social preferences.</small>
+      <textarea id="lifeEnrichment" name="lifeEnrichment" rows="3"></textarea>
+
+      <label for="medicationManagement">Medication Management</label>
+      <small>Time-sensitive meds, side effects, see Camascope for details, etc.</small>
+      <textarea id="medicationManagement" name="medicationManagement" rows="3"></textarea>
+
+      <label for="mobilityDexterity">Mobility &amp; Dexterity</label>
+      <small>Left-handed, can do buttons/zips, special equipment, etc.</small>
+      <textarea id="mobilityDexterity" name="mobilityDexterity" rows="3"></textarea>
+
+      <label for="nutritionHydration">Nutrition &amp; Hydration</label>
+      <small>Food preferences, risk of choking, position upright if bed-bound, etc.</small>
+      <textarea id="nutritionHydration" name="nutritionHydration" rows="3"></textarea>
+
+      <label for="oralHealth">Oral Health Care</label>
+      <small>Dentures? Electric/manual toothbrush? Mouthwash, floss, etc.</small>
+      <textarea id="oralHealth" name="oralHealth" rows="3"></textarea>
+
+      <label for="personalCare">Personal Care &amp; Hygiene</label>
+      <small>Washing, shaving, hair removal, nail care, etc.</small>
+      <textarea id="personalCare" name="personalCare" rows="3"></textarea>
+
+      <label for="physicalHealth">Physical Health &amp; Well-being</label>
+      <small>Chronic conditions, therapies, signpost relevant care plans.</small>
+      <textarea id="physicalHealth" name="physicalHealth" rows="3"></textarea>
+
+      <label for="skinIntegrity">Skin Integrity &amp; Pressure Care</label>
+      <small>Wounds, dryness, air mattress usage, involvement of DN/TVN.</small>
+      <textarea id="skinIntegrity" name="skinIntegrity" rows="3"></textarea>
+
+      <label for="sleepingNightCare">Sleeping &amp; Night Care</label>
+      <small>Night routine, removing dentures, lights on/off, call bell, nightly checks.</small>
+      <textarea id="sleepingNightCare" name="sleepingNightCare" rows="3"></textarea>
+
       <div class="btn-container">
         <button type="button" class="btn-nav" id="prevBtn6">Previous</button>
         <button type="button" class="btn-nav" id="nextBtn6">Next</button>
       </div>
     </div>
 
-    <!-- ================= STEP 7: SPECIALIST CARE PLANS (If Any) ================= -->
+    <!-- ================= STEP 7: SPECIALIST CARE PLANS ================= -->
     <div class="form-step" id="step-7">
       <h2>Step 7: Specialist Care Plans (If Applicable)</h2>
-      <!-- ... fields as before ... -->
+      <label for="specialistCarePlans">Details</label>
+      <small>
+        Conditions requiring extra detail: Diabetes, Epilepsy, Parkinson’s, Heart Disease, etc.
+      </small>
+      <textarea
+        id="specialistCarePlans"
+        name="specialistCarePlans"
+        rows="5"
+        placeholder="e.g., Parkinson’s with time-sensitive meds, Epilepsy triggers..."
+      ></textarea>
+
       <div class="btn-container">
         <button type="button" class="btn-nav" id="prevBtn7">Previous</button>
         <button type="button" class="btn-nav" id="nextBtn7">Next</button>
@@ -355,7 +422,23 @@
     <!-- ================= STEP 8: FOOT CARE ASSESSMENT ================= -->
     <div class="form-step" id="step-8">
       <h2>Step 8: Foot Care Assessment</h2>
-      <!-- ... fields as before ... -->
+      <label for="existingFootConditions">Existing Foot Conditions (Bunions, Ulcers, Corns)</label>
+      <textarea id="existingFootConditions" name="existingFootConditions" rows="3"></textarea>
+
+      <label for="toenailCutting">Toenail Cutting Needs</label>
+      <small>Chiropodist visits? Staff assist with moisturizing? etc.</small>
+      <textarea id="toenailCutting" name="toenailCutting" rows="3"></textarea>
+
+      <label>
+        <input type="checkbox" id="diabetesFoot" name="diabetesFoot"> Diabetes-related Foot Concerns?
+      </label>
+      <label>
+        <input type="checkbox" id="orthopedicFootwear" name="orthopedicFootwear"> Orthopedic Footwear Required?
+      </label>
+
+      <label for="podiatryVisits">Podiatry Visits (Frequency &amp; Details)</label>
+      <textarea id="podiatryVisits" name="podiatryVisits" rows="3"></textarea>
+
       <div class="btn-container">
         <button type="button" class="btn-nav" id="prevBtn8">Previous</button>
         <button type="button" class="btn-nav" id="nextBtn8">Next</button>
@@ -365,7 +448,15 @@
     <!-- ================= STEP 9: STAFF SIGN-OFF & SUMMARY ================= -->
     <div class="form-step" id="step-9">
       <h2>Step 9: Staff Sign-Off</h2>
-      <!-- ... final fields, plus summary ... -->
+      <label for="completedBy">Assessment Completed By</label>
+      <input type="text" id="completedBy" name="completedBy" placeholder="Staff member name">
+
+      <label for="dateCompletion">Date of Completion</label>
+      <input type="date" id="dateCompletion" name="dateCompletion">
+
+      <label for="homeManagerApproval">Home Manager Approval</label>
+      <input type="text" id="homeManagerApproval" name="homeManagerApproval" placeholder="Manager name or signature">
+
       <div class="btn-container">
         <button type="button" class="btn-nav" id="prevBtn9">Previous</button>
         <button type="button" id="generateSummaryBtn" class="btn-nav">Generate Summary</button>
@@ -377,18 +468,355 @@
     </div>
   </form>
 
-  <!-- ========== jsPDF ========== -->
+  <!-- ========== jsPDF from CDN ========== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <script>
-    /* ================= STEP NAVIGATION (SAME LOGIC) ================= */
-    /* (Include the next/prev logic for each step) */
+    /* ===================== STEP NAVIGATION ===================== */
+    const steps = document.querySelectorAll('.form-step');
+    let currentStep = 0;
 
-    /* ================= AUTO-CALCULATE AGE & BMI (SAME LOGIC) ================= */
-    /* (dobField, ageField, weightField, heightField, recalc) */
+    // Next/Prev button references
+    const nextBtn1 = document.getElementById('nextBtn1');
+    const nextBtn2 = document.getElementById('nextBtn2');
+    const prevBtn2 = document.getElementById('prevBtn2');
+    const nextBtn3 = document.getElementById('nextBtn3');
+    const prevBtn3 = document.getElementById('prevBtn3');
+    const nextBtn4 = document.getElementById('nextBtn4');
+    const prevBtn4 = document.getElementById('prevBtn4');
+    const nextBtn5 = document.getElementById('nextBtn5');
+    const prevBtn5 = document.getElementById('prevBtn5');
+    const nextBtn6 = document.getElementById('nextBtn6');
+    const prevBtn6 = document.getElementById('prevBtn6');
+    const nextBtn7 = document.getElementById('nextBtn7');
+    const prevBtn7 = document.getElementById('prevBtn7');
+    const nextBtn8 = document.getElementById('nextBtn8');
+    const prevBtn8 = document.getElementById('prevBtn8');
+    const prevBtn9 = document.getElementById('prevBtn9');
 
-    /* ================= SUMMARY & PDF GENERATION (SAME LOGIC) ================= */
-    /* (Generate summary, styled PDF with teal header, etc.) */
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.remove('active');
+        if (i === index) {
+          step.classList.add('active');
+        }
+      });
+      currentStep = index;
+    }
+
+    // Step 1 -> 2
+    if(nextBtn1) nextBtn1.addEventListener('click', () => showStep(1));
+    // Step 2 -> 1 or 3
+    if(nextBtn2) nextBtn2.addEventListener('click', () => showStep(2));
+    if(prevBtn2) prevBtn2.addEventListener('click', () => showStep(0));
+    // Step 3 -> 2 or 4
+    if(nextBtn3) nextBtn3.addEventListener('click', () => showStep(3));
+    if(prevBtn3) prevBtn3.addEventListener('click', () => showStep(1));
+    // Step 4 -> 3 or 5
+    if(nextBtn4) nextBtn4.addEventListener('click', () => showStep(4));
+    if(prevBtn4) prevBtn4.addEventListener('click', () => showStep(2));
+    // Step 5 -> 4 or 6
+    if(nextBtn5) nextBtn5.addEventListener('click', () => showStep(5));
+    if(prevBtn5) prevBtn5.addEventListener('click', () => showStep(3));
+    // Step 6 -> 5 or 7
+    if(nextBtn6) nextBtn6.addEventListener('click', () => showStep(6));
+    if(prevBtn6) prevBtn6.addEventListener('click', () => showStep(4));
+    // Step 7 -> 6 or 8
+    if(nextBtn7) nextBtn7.addEventListener('click', () => showStep(7));
+    if(prevBtn7) prevBtn7.addEventListener('click', () => showStep(5));
+    // Step 8 -> 7 or 9
+    if(nextBtn8) nextBtn8.addEventListener('click', () => showStep(8));
+    if(prevBtn8) prevBtn8.addEventListener('click', () => showStep(6));
+    // Step 9 -> 8
+    if(prevBtn9) prevBtn9.addEventListener('click', () => showStep(7));
+
+    // Initialize with step 1 shown
+    showStep(0);
+
+    /* ===================== AUTO-CALCULATE AGE & BMI ===================== */
+    const dobField = document.getElementById('dob');
+    const ageField = document.getElementById('age');
+    const weightField = document.getElementById('currentWeight');
+    const heightField = document.getElementById('currentHeight');
+    const bmiField = document.getElementById('bmiScore');
+
+    // Calculate Age on DOB change
+    dobField.addEventListener('change', () => {
+      const dobValue = dobField.value;
+      if (!dobValue) {
+        ageField.value = '';
+        return;
+      }
+      const dobDate = new Date(dobValue);
+      if (isNaN(dobDate.getTime())) {
+        ageField.value = '';
+        return;
+      }
+      const diffMs = Date.now() - dobDate.getTime();
+      const ageYears = Math.floor(diffMs / (365.25 * 24 * 60 * 60 * 1000));
+      if(ageYears >= 0) {
+        ageField.value = `${ageYears} years`;
+      } else {
+        ageField.value = '';
+      }
+    });
+
+    // Recalculate BMI whenever weight or height changes
+    function recalcBMI() {
+      const w = parseFloat(weightField.value);
+      const h = parseFloat(heightField.value);
+      if (w > 0 && h > 0) {
+        const bmi = w / (h * h);
+        bmiField.value = bmi.toFixed(1);
+      } else {
+        bmiField.value = '';
+      }
+    }
+    weightField.addEventListener('input', recalcBMI);
+    heightField.addEventListener('input', recalcBMI);
+
+    /* ===================== SUMMARY & PDF GENERATION ===================== */
+    const generateSummaryBtn = document.getElementById('generateSummaryBtn');
+    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+    const summaryArea = document.getElementById('summary');
+    const form = document.getElementById('assessmentForm');
+
+    // Gather form data
+    function getFormData() {
+      const data = new FormData(form);
+      // For checkboxes
+      const dnacpr = document.getElementById('dnacpr').checked ? 'Yes' : 'No';
+      const dols = document.getElementById('dols').checked ? 'Yes' : 'No';
+      const covid19 = document.getElementById('covid19').checked ? 'Yes' : 'No';
+      const poaHealth = document.getElementById('poaHealth').checked ? 'Yes' : 'No';
+      const poaFinance = document.getElementById('poaFinance').checked ? 'Yes' : 'No';
+      const diabetesFoot = document.getElementById('diabetesFoot').checked ? 'Yes' : 'No';
+      const orthopedicFootwear = document.getElementById('orthopedicFootwear').checked ? 'Yes' : 'No';
+
+      return {
+        title: data.get('title') || '',
+        firstName: data.get('firstName') || '',
+        lastName: data.get('lastName') || '',
+        preferredName: data.get('preferredName') || '',
+        sexAtBirth: data.get('sexAtBirth') || '',
+        genderIdentity: data.get('genderIdentity') || '',
+        dob: data.get('dob') || '',
+        age: data.get('age') || '',
+        residentPhone: data.get('residentPhone') || '',
+        residentEmail: data.get('residentEmail') || '',
+        nhsNumber: data.get('nhsNumber') || '',
+        integrationId: data.get('integrationId') || '',
+        dnacpr, dols, covid19,
+
+        biography: data.get('biography') || '',
+        quickNotes: data.get('quickNotes') || '',
+
+        nokFullName: data.get('nokFullName') || '',
+        nokRelationship: data.get('nokRelationship') || '',
+        nokPhone: data.get('nokPhone') || '',
+        poaHealth,
+        poaFinance,
+
+        dateAdmission: data.get('dateAdmission') || '',
+        admittedFrom: data.get('admittedFrom') || '',
+        fundingSource: data.get('fundingSource') || '',
+
+        allergies: data.get('allergies') || '',
+        dietaryPreferences: data.get('dietaryPreferences') || '',
+        emergencyInfo: data.get('emergencyInfo') || '',
+        clinicalHistory: data.get('clinicalHistory') || '',
+        medicationList: data.get('medicationList') || '',
+        currentWeight: data.get('currentWeight') || '',
+        currentHeight: data.get('currentHeight') || '',
+        bmiScore: data.get('bmiScore') || '',
+        weightLoss: data.get('weightLoss') || '',
+        mustScore: data.get('mustScore') || '',
+
+        advancedPlanning: data.get('advancedPlanning') || '',
+        cognition: data.get('cognition') || '',
+        communication: data.get('communication') || '',
+        continenceCare: data.get('continenceCare') || '',
+        emotionalWellbeing: data.get('emotionalWellbeing') || '',
+        sexuality: data.get('sexuality') || '',
+        lifeEnrichment: data.get('lifeEnrichment') || '',
+        medicationManagement: data.get('medicationManagement') || '',
+        mobilityDexterity: data.get('mobilityDexterity') || '',
+        nutritionHydration: data.get('nutritionHydration') || '',
+        oralHealth: data.get('oralHealth') || '',
+        personalCare: data.get('personalCare') || '',
+        physicalHealth: data.get('physicalHealth') || '',
+        skinIntegrity: data.get('skinIntegrity') || '',
+        sleepingNightCare: data.get('sleepingNightCare') || '',
+
+        specialistCarePlans: data.get('specialistCarePlans') || '',
+        existingFootConditions: data.get('existingFootConditions') || '',
+        toenailCutting: data.get('toenailCutting') || '',
+        diabetesFoot,
+        orthopedicFootwear,
+        podiatryVisits: data.get('podiatryVisits') || '',
+
+        completedBy: data.get('completedBy') || '',
+        dateCompletion: data.get('dateCompletion') || '',
+        homeManagerApproval: data.get('homeManagerApproval') || ''
+      };
+    }
+
+    // Build summary text with headings
+    function createSummaryText(d) {
+      return `
+*** General Information ***
+Title: ${d.title}
+First Name: ${d.firstName}
+Last Name: ${d.lastName}
+Preferred Name: ${d.preferredName}
+Sex at Birth: ${d.sexAtBirth}
+Gender Identity: ${d.genderIdentity}
+Date of Birth: ${d.dob}
+Age: ${d.age}
+Resident’s Phone: ${d.residentPhone}
+Resident’s Email: ${d.residentEmail}
+NHS/CHI Number: ${d.nhsNumber}
+Integration ID: ${d.integrationId}
+DNACPR in Place: ${d.dnacpr}
+DoLS in Place: ${d.dols}
+Treating as COVID-19: ${d.covid19}
+
+*** Biography & Quick Notes ***
+Biography: ${d.biography}
+Quick Notes: ${d.quickNotes}
+
+*** Circle of Care ***
+Next of Kin: ${d.nokFullName}
+Relationship: ${d.nokRelationship}
+Phone: ${d.nokPhone}
+POA for Health: ${d.poaHealth}
+POA for Finance: ${d.poaFinance}
+
+*** Onboarding & Needs Assessment ***
+Date of Admission: ${d.dateAdmission}
+Admitted From: ${d.admittedFrom}
+Funding Source: ${d.fundingSource}
+
+*** Clinical Information ***
+Allergies & Intolerances: ${d.allergies}
+Dietary Preferences & Nutrition Needs: ${d.dietaryPreferences}
+Emergency Info & Admission Decision: ${d.emergencyInfo}
+Clinical History & Medical Conditions: ${d.clinicalHistory}
+Medication List: ${d.medicationList}
+MUST:
+  Weight (kg): ${d.currentWeight}
+  Height (m): ${d.currentHeight}
+  BMI Score: ${d.bmiScore}
+  Weight Loss in Past 3-6 Months (%): ${d.weightLoss}
+  Overall MUST Score: ${d.mustScore}
+
+*** Mandatory Care Plan Sections ***
+Advanced Planning (EOL): ${d.advancedPlanning}
+Cognition: ${d.cognition}
+Communication: ${d.communication}
+Continence Care: ${d.continenceCare}
+Emotional Well-being & Mental Health: ${d.emotionalWellbeing}
+Expressing Sexuality: ${d.sexuality}
+Life Enrichment & Social Activities: ${d.lifeEnrichment}
+Medication Management: ${d.medicationManagement}
+Mobility & Dexterity: ${d.mobilityDexterity}
+Nutrition & Hydration: ${d.nutritionHydration}
+Oral Health Care: ${d.oralHealth}
+Personal Care & Hygiene: ${d.personalCare}
+Physical Health & Well-being: ${d.physicalHealth}
+Skin Integrity & Pressure Care: ${d.skinIntegrity}
+Sleeping & Night Care: ${d.sleepingNightCare}
+
+*** Specialist Care Plans (If Applicable) ***
+${d.specialistCarePlans}
+
+*** Foot Care Assessment ***
+Existing Foot Conditions: ${d.existingFootConditions}
+Toenail Cutting Needs: ${d.toenailCutting}
+Diabetes-related Foot Concerns: ${d.diabetesFoot}
+Orthopedic Footwear Required: ${d.orthopedicFootwear}
+Podiatry Visits: ${d.podiatryVisits}
+
+*** Staff Sign-Off ***
+Assessment Completed By: ${d.completedBy}
+Date of Completion: ${d.dateCompletion}
+Home Manager Approval: ${d.homeManagerApproval}
+`;
+    }
+
+    // Generate summary in textarea
+    if(generateSummaryBtn) {
+      generateSummaryBtn.addEventListener('click', () => {
+        const formData = getFormData();
+        summaryArea.value = createSummaryText(formData);
+      });
+    }
+
+    // Download PDF with styled header
+    if(downloadPdfBtn) {
+      downloadPdfBtn.addEventListener('click', () => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+        // Page dimensions
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+
+        // Helper: teal header
+        function drawHeader() {
+          doc.setFillColor(92,158,173);
+          doc.rect(0, 0, pageWidth, 40, 'F');
+          doc.setFont('Helvetica', 'bold');
+          doc.setFontSize(18);
+          doc.setTextColor(255,255,255);
+          doc.text('Care Plan Pre-Assessment', 20, 26);
+          doc.setFont('Helvetica', 'normal');
+          doc.setFontSize(12);
+          doc.setTextColor(0,0,0);
+        }
+
+        const formData = getFormData();
+        const lines = createSummaryText(formData).split('\n');
+
+        drawHeader();
+        let x = 20;
+        let y = 60;
+        const lineHeight = 14;
+
+        lines.forEach(line => {
+          if (y > pageHeight - 40) {
+            doc.addPage();
+            drawHeader();
+            y = 60;
+          }
+          if (line.startsWith('*** ')) {
+            doc.setFont('Helvetica', 'bold');
+            doc.setFontSize(13);
+            doc.text(line.replace('*** ',''), x, y);
+            doc.setFont('Helvetica', 'normal');
+            doc.setFontSize(12);
+          } else {
+            const splitted = doc.splitTextToSize(line, 550);
+            splitted.forEach(str => {
+              doc.text(str, x, y);
+              y += lineHeight;
+              if (y > pageHeight - 40) {
+                doc.addPage();
+                drawHeader();
+                y = 60;
+              }
+            });
+            y -= lineHeight;
+          }
+          y += lineHeight;
+        });
+
+        doc.save('Resident_PreAssessment.pdf');
+      });
+    }
+
+    // Show the first step
+    showStep(0);
   </script>
 </body>
 </html>
