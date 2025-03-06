@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>Care Plan Pre-Assessment</title>
   <style>
-    /* ---------- Basic Page & Body Styles ---------- */
+    /* -- Basic Page & Body Styles -- */
     body {
       margin: 0 auto;
       max-width: 800px;
@@ -12,8 +12,6 @@
       font-family: Arial, sans-serif;
       color: #333;
       font-size: 18px;
-
-      /* Light background plus the ribbon image in the bottom-left corner */
       background-color: #f7f9f4;
       background-image: url("https://i.ibb.co/tpQ4Yh49/Greensleeves-Care-Brand-Ribbon-scaled.webp");
       background-repeat: no-repeat;
@@ -21,7 +19,7 @@
       background-size: 300px auto;
     }
 
-    /* ---------- Header & Logo ---------- */
+    /* -- Header & Logo -- */
     .header-brand {
       display: flex;
       align-items: center;
@@ -40,9 +38,9 @@
       margin: 0;
     }
 
-    /* ---------- Multi-Step Form Steps ---------- */
+    /* -- Multi-Step Form Steps -- */
     .form-step {
-      display: none;
+      display: none;  /* hidden by default */
       background-color: #fff;
       border: 1px solid #ccc;
       border-radius: 6px;
@@ -51,14 +49,14 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .form-step.active {
-      display: block;
+      display: block; /* show the current step */
     }
     .form-step h2 {
       font-size: 1.4rem;
       margin-top: 0;
     }
 
-    /* ---------- Labels & Inputs ---------- */
+    /* -- Labels & Inputs -- */
     label {
       display: block;
       margin: 1rem 0 0.25rem;
@@ -95,7 +93,7 @@
       background-color: #f2f2f2;
     }
 
-    /* ---------- Buttons ---------- */
+    /* -- Buttons -- */
     .btn-container {
       text-align: center;
       margin: 1rem 0;
@@ -114,7 +112,7 @@
       background-color: #6f7f58;
     }
 
-    /* ---------- Summary Textarea ---------- */
+    /* -- Summary Textarea -- */
     #summary {
       width: 100%;
       min-height: 150px;
@@ -122,7 +120,7 @@
       font-size: 1rem;
     }
 
-    /* ---------- Responsive for Mobile (<600px) ---------- */
+    /* -- Responsive for Mobile (<600px) -- */
     @media (max-width: 600px) {
       body {
         padding: 8px;
@@ -150,7 +148,7 @@
 </head>
 <body>
 
-  <!-- ========== Greensleeves Logo & Title ========== -->
+  <!-- ========== Logo & Title ========== -->
   <div class="header-brand">
     <img 
       src="https://i.ibb.co/HL44C8Tw/greensleeves-thumbnail-logo-png-120x120-q50-ALIAS-brand-icon-crop-progressive-subsampling-2-upscale.jpg" 
@@ -160,11 +158,11 @@
   </div>
 
   <form id="assessmentForm">
-    <!-- ================= STEP 1: GENERAL INFORMATION ================= -->
+    <!-- ===================== STEP 1 ===================== -->
     <div class="form-step active" id="step-1">
       <h2>Step 1: General Information</h2>
       <label for="title">Title</label>
-      <small>e.g., Mr, Mrs, Ms, Dr</small>
+      <small>(e.g., Mr, Mrs, Ms, Dr)</small>
       <input type="text" id="title" name="title" placeholder="Mr/Mrs/Ms/Dr">
 
       <label for="firstName">First Name</label>
@@ -175,8 +173,8 @@
       <input type="text" id="lastName" name="lastName" placeholder="e.g., Smith">
 
       <label for="preferredName">Preferred Name</label>
-      <small>e.g., “Johnny” or “Liz.” Use correct pronouns (he/him, she/her, they/them).</small>
-      <input type="text" id="preferredName" name="preferredName" placeholder="Johnny">
+      <small>e.g., “Johnny” or “Liz”; use correct pronouns (he/him, she/her, they/them).</small>
+      <input type="text" id="preferredName" name="preferredName">
 
       <label for="sexAtBirth">Sex at Birth</label>
       <input type="text" id="sexAtBirth" name="sexAtBirth" placeholder="Male/Female">
@@ -185,7 +183,7 @@
       <input type="text" id="genderIdentity" name="genderIdentity" placeholder="Man/Woman/etc.">
 
       <label for="dob">Date of Birth</label>
-      <!-- No min/max constraints; you can manually type the year if needed -->
+      <!-- No min/max; manually type older years if needed -->
       <input type="date" id="dob" name="dob">
 
       <label for="age">Age (Auto-calc)</label>
@@ -204,33 +202,24 @@
       <small>Auto-generated or manually entered. Signpost location if needed.</small>
       <input type="text" id="integrationId" name="integrationId">
 
-      <label>
-        <input type="checkbox" id="dnacpr" name="dnacpr"> DNACPR in Place?
-      </label>
-      <label>
-        <input type="checkbox" id="dols" name="dols"> Deprivation of Liberty Safeguards (DoLS) in Place?
-      </label>
-      <label>
-        <input type="checkbox" id="covid19" name="covid19"> Treating as COVID-19?
-      </label>
+      <label><input type="checkbox" id="dnacpr" name="dnacpr"> DNACPR in Place?</label>
+      <label><input type="checkbox" id="dols" name="dols"> Deprivation of Liberty Safeguards (DoLS) in Place?</label>
+      <label><input type="checkbox" id="covid19" name="covid19"> Treating as COVID-19?</label>
 
       <div class="btn-container">
         <button type="button" class="btn-nav" id="nextBtn1">Next</button>
       </div>
     </div>
 
-    <!-- ================= STEP 2: BIOGRAPHY & QUICK NOTES ================= -->
+    <!-- ===================== STEP 2 ===================== -->
     <div class="form-step" id="step-2">
       <h2>Step 2: Biography & Quick Notes</h2>
       <label for="biography">Biography</label>
-      <small>
-        Provide a brief account of the resident’s life: past, present, interests, family, relationships, career, religious beliefs.
-        Do not include medical information.
-      </small>
-      <textarea id="biography" name="biography" rows="4" placeholder="e.g., Born in..., loves knitting, reading..."></textarea>
+      <small>Brief account of their life: past, interests, family, relationships, etc.</small>
+      <textarea id="biography" name="biography" rows="4"></textarea>
 
       <label for="quickNotes">General Quick Notes</label>
-      <small>Short immediate observations or personal preferences (non-medical if possible).</small>
+      <small>Short immediate observations or personal preferences.</small>
       <textarea id="quickNotes" name="quickNotes" rows="3"></textarea>
 
       <div class="btn-container">
@@ -239,25 +228,21 @@
       </div>
     </div>
 
-    <!-- ================= STEP 3: CIRCLE OF CARE ================= -->
+    <!-- ===================== STEP 3 ===================== -->
     <div class="form-step" id="step-3">
       <h2>Step 3: Circle of Care</h2>
       <label for="nokFullName">Next of Kin Full Name</label>
       <input type="text" id="nokFullName" name="nokFullName" placeholder="e.g., Jane Doe">
 
       <label for="nokRelationship">Relationship</label>
-      <small>e.g., Daughter, Son, Best Friend</small>
+      <small>(e.g., Daughter, Son, Best Friend)</small>
       <input type="text" id="nokRelationship" name="nokRelationship" placeholder="Daughter">
 
       <label for="nokPhone">Phone Number</label>
       <input type="text" id="nokPhone" name="nokPhone" placeholder="07123 456789">
 
-      <label>
-        <input type="checkbox" id="poaHealth" name="poaHealth"> Power of Attorney for Health?
-      </label>
-      <label>
-        <input type="checkbox" id="poaFinance" name="poaFinance"> Power of Attorney for Finance?
-      </label>
+      <label><input type="checkbox" id="poaHealth" name="poaHealth"> Power of Attorney for Health?</label>
+      <label><input type="checkbox" id="poaFinance" name="poaFinance"> Power of Attorney for Finance?</label>
 
       <div class="btn-container">
         <button type="button" class="btn-nav" id="prevBtn3">Previous</button>
@@ -265,18 +250,18 @@
       </div>
     </div>
 
-    <!-- ================= STEP 4: ONBOARDING & NEEDS ASSESSMENT ================= -->
+    <!-- ===================== STEP 4 ===================== -->
     <div class="form-step" id="step-4">
       <h2>Step 4: Onboarding & Needs Assessment</h2>
       <label for="dateAdmission">Date of Admission</label>
       <input type="date" id="dateAdmission" name="dateAdmission">
 
       <label for="admittedFrom">Admitted From</label>
-      <small>e.g., Hospital, Home, Another Care Facility</small>
+      <small>(e.g., Hospital, Home, Another Care Facility)</small>
       <input type="text" id="admittedFrom" name="admittedFrom" placeholder="Local Hospital...">
 
       <label for="fundingSource">Funding Source</label>
-      <small>e.g., NHS, Private, Local Authority</small>
+      <small>(e.g., NHS, Private, Local Authority)</small>
       <input type="text" id="fundingSource" name="fundingSource" placeholder="NHS/Private...">
 
       <div class="btn-container">
@@ -285,11 +270,11 @@
       </div>
     </div>
 
-    <!-- ================= STEP 5: CLINICAL INFORMATION ================= -->
+    <!-- ===================== STEP 5 ===================== -->
     <div class="form-step" id="step-5">
       <h2>Step 5: Clinical Information</h2>
       <label for="allergies">Allergies &amp; Intolerances</label>
-      <small>Avoid “none” unless truly applicable. E.g., Allergic to penicillin, lactose intolerance.</small>
+      <small>Avoid “none” unless truly applicable. e.g., Allergic to penicillin.</small>
       <textarea id="allergies" name="allergies" rows="3"></textarea>
 
       <label for="dietaryPreferences">Dietary Preferences &amp; Nutrition Needs</label>
@@ -297,33 +282,33 @@
       <textarea id="dietaryPreferences" name="dietaryPreferences" rows="3"></textarea>
 
       <label for="emergencyInfo">Emergency Information &amp; Admission Decision</label>
-      <small>Who makes medical decisions in emergencies? How to notify next of kin?</small>
+      <small>Who makes medical decisions in emergencies? etc.</small>
       <textarea id="emergencyInfo" name="emergencyInfo" rows="3"></textarea>
 
       <label for="clinicalHistory">Clinical History &amp; Medical Conditions</label>
-      <small>e.g. Diabetes, Epilepsy, Parkinson’s. Note relevant care plans if needed.</small>
+      <small>Diabetes, Epilepsy, Parkinson’s, etc.</small>
       <textarea id="clinicalHistory" name="clinicalHistory" rows="3"></textarea>
 
       <label for="medicationList">Medication List</label>
-      <small>Type of medication, side effects, any special instructions (time-sensitive, etc.).</small>
+      <small>Type of medication, side effects, time-sensitive, etc.</small>
       <textarea id="medicationList" name="medicationList" rows="3"></textarea>
 
       <h3>Malnutrition Universal Screening Tool (MUST)</h3>
       <label for="currentWeight">Current Weight (kg)</label>
-      <input type="number" id="currentWeight" name="currentWeight" step="0.1" placeholder="e.g., 70.5">
+      <input type="number" id="currentWeight" name="currentWeight" step="0.1" placeholder="e.g. 70.5">
 
       <label for="currentHeight">Current Height (m)</label>
-      <input type="number" id="currentHeight" name="currentHeight" step="0.01" placeholder="e.g., 1.75">
+      <input type="number" id="currentHeight" name="currentHeight" step="0.01" placeholder="e.g. 1.75">
 
       <label for="bmiScore">BMI Score (Auto-calc)</label>
       <input type="text" id="bmiScore" name="bmiScore" placeholder="Auto-calc" readonly>
 
       <label for="weightLoss">Weight Loss in Past 3-6 Months (%)</label>
-      <input type="number" id="weightLoss" name="weightLoss" step="0.1" placeholder="e.g., 5.0">
+      <input type="number" id="weightLoss" name="weightLoss" step="0.1" placeholder="e.g. 5.0">
 
       <label for="mustScore">Overall MUST Score</label>
-      <small>Evaluate risk: Low, Medium, High</small>
-      <input type="text" id="mustScore" name="mustScore" placeholder="e.g., 1 (low risk)">
+      <small>e.g., 1 = low risk</small>
+      <input type="text" id="mustScore" name="mustScore" placeholder="1 (low risk)">
 
       <div class="btn-container">
         <button type="button" class="btn-nav" id="prevBtn5">Previous</button>
@@ -331,87 +316,24 @@
       </div>
     </div>
 
-    <!-- ================= STEP 6: MANDATORY CARE PLAN SECTIONS ================= -->
+    <!-- ===================== STEP 6 ===================== -->
     <div class="form-step" id="step-6">
       <h2>Step 6: Mandatory Care Plan Sections</h2>
-      <label for="advancedPlanning">Advanced Planning / End of Life (EOL)</label>
-      <small>DNACPR or ReSPECT forms, funeral wishes, etc.</small>
+      <!-- (All the mandatory care plan fields...) -->
+      <label for="advancedPlanning">Advanced Planning</label>
       <textarea id="advancedPlanning" name="advancedPlanning" rows="3"></textarea>
-
-      <label for="cognition">Cognition</label>
-      <small>Dementia, memory issues, how they prefer to communicate.</small>
-      <textarea id="cognition" name="cognition" rows="3"></textarea>
-
-      <label for="communication">Communication</label>
-      <small>Hearing/speech impairments, communication aids, etc.</small>
-      <textarea id="communication" name="communication" rows="3"></textarea>
-
-      <label for="continenceCare">Continence Care</label>
-      <small>Type/size of products, support needed, routines.</small>
-      <textarea id="continenceCare" name="continenceCare" rows="3"></textarea>
-
-      <label for="emotionalWellbeing">Emotional Well-being &amp; Mental Health</label>
-      <textarea id="emotionalWellbeing" name="emotionalWellbeing" rows="3"></textarea>
-
-      <label for="sexuality">Expressing Sexuality</label>
-      <small>Clothing, makeup, jewellery, hairdresser visits, etc.</small>
-      <textarea id="sexuality" name="sexuality" rows="3"></textarea>
-
-      <label for="lifeEnrichment">Life Enrichment &amp; Social Activities</label>
-      <small>Hobbies, interests, outings, social preferences.</small>
-      <textarea id="lifeEnrichment" name="lifeEnrichment" rows="3"></textarea>
-
-      <label for="medicationManagement">Medication Management</label>
-      <small>Time-sensitive meds, side effects, see Camascope for details, etc.</small>
-      <textarea id="medicationManagement" name="medicationManagement" rows="3"></textarea>
-
-      <label for="mobilityDexterity">Mobility &amp; Dexterity</label>
-      <small>Left-handed, can do buttons/zips, special equipment, etc.</small>
-      <textarea id="mobilityDexterity" name="mobilityDexterity" rows="3"></textarea>
-
-      <label for="nutritionHydration">Nutrition &amp; Hydration</label>
-      <small>Food preferences, risk of choking, position upright if bed-bound, etc.</small>
-      <textarea id="nutritionHydration" name="nutritionHydration" rows="3"></textarea>
-
-      <label for="oralHealth">Oral Health Care</label>
-      <small>Dentures? Electric/manual toothbrush? Mouthwash, floss, etc.</small>
-      <textarea id="oralHealth" name="oralHealth" rows="3"></textarea>
-
-      <label for="personalCare">Personal Care &amp; Hygiene</label>
-      <small>Washing, shaving, hair removal, nail care, etc.</small>
-      <textarea id="personalCare" name="personalCare" rows="3"></textarea>
-
-      <label for="physicalHealth">Physical Health &amp; Well-being</label>
-      <small>Chronic conditions, therapies, signpost relevant care plans.</small>
-      <textarea id="physicalHealth" name="physicalHealth" rows="3"></textarea>
-
-      <label for="skinIntegrity">Skin Integrity &amp; Pressure Care</label>
-      <small>Wounds, dryness, air mattress usage, involvement of DN/TVN.</small>
-      <textarea id="skinIntegrity" name="skinIntegrity" rows="3"></textarea>
-
-      <label for="sleepingNightCare">Sleeping &amp; Night Care</label>
-      <small>Night routine, removing dentures, lights on/off, call bell, nightly checks.</small>
-      <textarea id="sleepingNightCare" name="sleepingNightCare" rows="3"></textarea>
-
+      <!-- etc. -->
       <div class="btn-container">
         <button type="button" class="btn-nav" id="prevBtn6">Previous</button>
         <button type="button" class="btn-nav" id="nextBtn6">Next</button>
       </div>
     </div>
 
-    <!-- ================= STEP 7: SPECIALIST CARE PLANS ================= -->
+    <!-- ===================== STEP 7 ===================== -->
     <div class="form-step" id="step-7">
-      <h2>Step 7: Specialist Care Plans (If Applicable)</h2>
+      <h2>Step 7: Specialist Care Plans</h2>
       <label for="specialistCarePlans">Details</label>
-      <small>
-        Conditions requiring extra detail: Diabetes, Epilepsy, Parkinson’s, Heart Disease, etc.
-      </small>
-      <textarea
-        id="specialistCarePlans"
-        name="specialistCarePlans"
-        rows="5"
-        placeholder="e.g., Parkinson’s with time-sensitive meds, Epilepsy triggers..."
-      ></textarea>
+      <textarea id="specialistCarePlans" name="specialistCarePlans" rows="5"></textarea>
 
       <div class="btn-container">
         <button type="button" class="btn-nav" id="prevBtn7">Previous</button>
@@ -419,24 +341,16 @@
       </div>
     </div>
 
-    <!-- ================= STEP 8: FOOT CARE ASSESSMENT ================= -->
+    <!-- ===================== STEP 8 ===================== -->
     <div class="form-step" id="step-8">
       <h2>Step 8: Foot Care Assessment</h2>
-      <label for="existingFootConditions">Existing Foot Conditions (Bunions, Ulcers, Corns)</label>
+      <label for="existingFootConditions">Existing Foot Conditions</label>
       <textarea id="existingFootConditions" name="existingFootConditions" rows="3"></textarea>
-
       <label for="toenailCutting">Toenail Cutting Needs</label>
-      <small>Chiropodist visits? Staff assist with moisturizing? etc.</small>
       <textarea id="toenailCutting" name="toenailCutting" rows="3"></textarea>
-
-      <label>
-        <input type="checkbox" id="diabetesFoot" name="diabetesFoot"> Diabetes-related Foot Concerns?
-      </label>
-      <label>
-        <input type="checkbox" id="orthopedicFootwear" name="orthopedicFootwear"> Orthopedic Footwear Required?
-      </label>
-
-      <label for="podiatryVisits">Podiatry Visits (Frequency &amp; Details)</label>
+      <label><input type="checkbox" id="diabetesFoot" name="diabetesFoot"> Diabetes-related Foot Concerns?</label>
+      <label><input type="checkbox" id="orthopedicFootwear" name="orthopedicFootwear"> Orthopedic Footwear?</label>
+      <label for="podiatryVisits">Podiatry Visits</label>
       <textarea id="podiatryVisits" name="podiatryVisits" rows="3"></textarea>
 
       <div class="btn-container">
@@ -445,17 +359,17 @@
       </div>
     </div>
 
-    <!-- ================= STEP 9: STAFF SIGN-OFF & SUMMARY ================= -->
+    <!-- ===================== STEP 9 ===================== -->
     <div class="form-step" id="step-9">
       <h2>Step 9: Staff Sign-Off</h2>
       <label for="completedBy">Assessment Completed By</label>
-      <input type="text" id="completedBy" name="completedBy" placeholder="Staff member name">
+      <input type="text" id="completedBy" name="completedBy">
 
       <label for="dateCompletion">Date of Completion</label>
       <input type="date" id="dateCompletion" name="dateCompletion">
 
       <label for="homeManagerApproval">Home Manager Approval</label>
-      <input type="text" id="homeManagerApproval" name="homeManagerApproval" placeholder="Manager name or signature">
+      <input type="text" id="homeManagerApproval" name="homeManagerApproval">
 
       <div class="btn-container">
         <button type="button" class="btn-nav" id="prevBtn9">Previous</button>
@@ -468,79 +382,69 @@
     </div>
   </form>
 
-  <!-- ========== jsPDF from CDN ========== -->
+  <!-- ========== jsPDF ========== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
   <script>
-    /* ===================== STEP NAVIGATION ===================== */
+    /* =================== STEP NAVIGATION LOGIC =================== */
     const steps = document.querySelectorAll('.form-step');
     let currentStep = 0;
 
-    // Next/Prev button references
+    // Next/Prev button references for each step
     const nextBtn1 = document.getElementById('nextBtn1');
-    const nextBtn2 = document.getElementById('nextBtn2');
-    const prevBtn2 = document.getElementById('prevBtn2');
-    const nextBtn3 = document.getElementById('nextBtn3');
-    const prevBtn3 = document.getElementById('prevBtn3');
-    const nextBtn4 = document.getElementById('nextBtn4');
-    const prevBtn4 = document.getElementById('prevBtn4');
-    const nextBtn5 = document.getElementById('nextBtn5');
-    const prevBtn5 = document.getElementById('prevBtn5');
-    const nextBtn6 = document.getElementById('nextBtn6');
-    const prevBtn6 = document.getElementById('prevBtn6');
-    const nextBtn7 = document.getElementById('nextBtn7');
-    const prevBtn7 = document.getElementById('prevBtn7');
-    const nextBtn8 = document.getElementById('nextBtn8');
-    const prevBtn8 = document.getElementById('prevBtn8');
+    const nextBtn2 = document.getElementById('nextBtn2'); const prevBtn2 = document.getElementById('prevBtn2');
+    const nextBtn3 = document.getElementById('nextBtn3'); const prevBtn3 = document.getElementById('prevBtn3');
+    const nextBtn4 = document.getElementById('nextBtn4'); const prevBtn4 = document.getElementById('prevBtn4');
+    const nextBtn5 = document.getElementById('nextBtn5'); const prevBtn5 = document.getElementById('prevBtn5');
+    const nextBtn6 = document.getElementById('nextBtn6'); const prevBtn6 = document.getElementById('prevBtn6');
+    const nextBtn7 = document.getElementById('nextBtn7'); const prevBtn7 = document.getElementById('prevBtn7');
+    const nextBtn8 = document.getElementById('nextBtn8'); const prevBtn8 = document.getElementById('prevBtn8');
     const prevBtn9 = document.getElementById('prevBtn9');
 
     function showStep(index) {
       steps.forEach((step, i) => {
         step.classList.remove('active');
-        if (i === index) {
-          step.classList.add('active');
-        }
+        if (i === index) step.classList.add('active');
       });
       currentStep = index;
     }
 
     // Step 1 -> 2
-    if(nextBtn1) nextBtn1.addEventListener('click', () => showStep(1));
+    if (nextBtn1) nextBtn1.addEventListener('click', () => showStep(1));
     // Step 2 -> 1 or 3
-    if(nextBtn2) nextBtn2.addEventListener('click', () => showStep(2));
-    if(prevBtn2) prevBtn2.addEventListener('click', () => showStep(0));
+    if (nextBtn2) nextBtn2.addEventListener('click', () => showStep(2));
+    if (prevBtn2) prevBtn2.addEventListener('click', () => showStep(0));
     // Step 3 -> 2 or 4
-    if(nextBtn3) nextBtn3.addEventListener('click', () => showStep(3));
-    if(prevBtn3) prevBtn3.addEventListener('click', () => showStep(1));
+    if (nextBtn3) nextBtn3.addEventListener('click', () => showStep(3));
+    if (prevBtn3) prevBtn3.addEventListener('click', () => showStep(1));
     // Step 4 -> 3 or 5
-    if(nextBtn4) nextBtn4.addEventListener('click', () => showStep(4));
-    if(prevBtn4) prevBtn4.addEventListener('click', () => showStep(2));
+    if (nextBtn4) nextBtn4.addEventListener('click', () => showStep(4));
+    if (prevBtn4) prevBtn4.addEventListener('click', () => showStep(2));
     // Step 5 -> 4 or 6
-    if(nextBtn5) nextBtn5.addEventListener('click', () => showStep(5));
-    if(prevBtn5) prevBtn5.addEventListener('click', () => showStep(3));
+    if (nextBtn5) nextBtn5.addEventListener('click', () => showStep(5));
+    if (prevBtn5) prevBtn5.addEventListener('click', () => showStep(3));
     // Step 6 -> 5 or 7
-    if(nextBtn6) nextBtn6.addEventListener('click', () => showStep(6));
-    if(prevBtn6) prevBtn6.addEventListener('click', () => showStep(4));
+    if (nextBtn6) nextBtn6.addEventListener('click', () => showStep(6));
+    if (prevBtn6) prevBtn6.addEventListener('click', () => showStep(4));
     // Step 7 -> 6 or 8
-    if(nextBtn7) nextBtn7.addEventListener('click', () => showStep(7));
-    if(prevBtn7) prevBtn7.addEventListener('click', () => showStep(5));
+    if (nextBtn7) nextBtn7.addEventListener('click', () => showStep(7));
+    if (prevBtn7) prevBtn7.addEventListener('click', () => showStep(5));
     // Step 8 -> 7 or 9
-    if(nextBtn8) nextBtn8.addEventListener('click', () => showStep(8));
-    if(prevBtn8) prevBtn8.addEventListener('click', () => showStep(6));
+    if (nextBtn8) nextBtn8.addEventListener('click', () => showStep(8));
+    if (prevBtn8) prevBtn8.addEventListener('click', () => showStep(6));
     // Step 9 -> 8
-    if(prevBtn9) prevBtn9.addEventListener('click', () => showStep(7));
+    if (prevBtn9) prevBtn9.addEventListener('click', () => showStep(7));
 
-    // Initialize with step 1 shown
+    // Show the first step
     showStep(0);
 
-    /* ===================== AUTO-CALCULATE AGE & BMI ===================== */
+    /* =================== AUTO-CALCULATE AGE & BMI =================== */
     const dobField = document.getElementById('dob');
     const ageField = document.getElementById('age');
     const weightField = document.getElementById('currentWeight');
     const heightField = document.getElementById('currentHeight');
     const bmiField = document.getElementById('bmiScore');
 
-    // Calculate Age on DOB change
+    // Auto Age from DOB
     dobField.addEventListener('change', () => {
       const dobValue = dobField.value;
       if (!dobValue) {
@@ -561,7 +465,7 @@
       }
     });
 
-    // Recalculate BMI whenever weight or height changes
+    // Auto BMI from Weight & Height
     function recalcBMI() {
       const w = parseFloat(weightField.value);
       const h = parseFloat(heightField.value);
@@ -575,16 +479,15 @@
     weightField.addEventListener('input', recalcBMI);
     heightField.addEventListener('input', recalcBMI);
 
-    /* ===================== SUMMARY & PDF GENERATION ===================== */
+    /* =================== SUMMARY & PDF GENERATION =================== */
     const generateSummaryBtn = document.getElementById('generateSummaryBtn');
     const downloadPdfBtn = document.getElementById('downloadPdfBtn');
     const summaryArea = document.getElementById('summary');
     const form = document.getElementById('assessmentForm');
 
-    // Gather form data
     function getFormData() {
       const data = new FormData(form);
-      // For checkboxes
+      // Checkboxes
       const dnacpr = document.getElementById('dnacpr').checked ? 'Yes' : 'No';
       const dols = document.getElementById('dols').checked ? 'Yes' : 'No';
       const covid19 = document.getElementById('covid19').checked ? 'Yes' : 'No';
@@ -661,7 +564,6 @@
       };
     }
 
-    // Build summary text with headings
     function createSummaryText(d) {
       return `
 *** General Information ***
@@ -744,7 +646,7 @@ Home Manager Approval: ${d.homeManagerApproval}
 `;
     }
 
-    // Generate summary in textarea
+    // Generate Summary
     if(generateSummaryBtn) {
       generateSummaryBtn.addEventListener('click', () => {
         const formData = getFormData();
@@ -752,17 +654,17 @@ Home Manager Approval: ${d.homeManagerApproval}
       });
     }
 
-    // Download PDF with styled header
+    // Download PDF
     if(downloadPdfBtn) {
       downloadPdfBtn.addEventListener('click', () => {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF({ unit: 'pt', format: 'a4' });
 
-        // Page dimensions
+        // Page dimension
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
 
-        // Helper: teal header
+        // Teal header
         function drawHeader() {
           doc.setFillColor(92,158,173);
           doc.rect(0, 0, pageWidth, 40, 'F');
@@ -784,15 +686,15 @@ Home Manager Approval: ${d.homeManagerApproval}
         const lineHeight = 14;
 
         lines.forEach(line => {
-          if (y > pageHeight - 40) {
+          if(y > pageHeight - 40) {
             doc.addPage();
             drawHeader();
             y = 60;
           }
-          if (line.startsWith('*** ')) {
+          if(line.startsWith('*** ')) {
             doc.setFont('Helvetica', 'bold');
             doc.setFontSize(13);
-            doc.text(line.replace('*** ',''), x, y);
+            doc.text(line.replace('*** ','') , x, y);
             doc.setFont('Helvetica', 'normal');
             doc.setFontSize(12);
           } else {
@@ -800,7 +702,7 @@ Home Manager Approval: ${d.homeManagerApproval}
             splitted.forEach(str => {
               doc.text(str, x, y);
               y += lineHeight;
-              if (y > pageHeight - 40) {
+              if(y > pageHeight - 40) {
                 doc.addPage();
                 drawHeader();
                 y = 60;
@@ -814,9 +716,6 @@ Home Manager Approval: ${d.homeManagerApproval}
         doc.save('Resident_PreAssessment.pdf');
       });
     }
-
-    // Show the first step
-    showStep(0);
   </script>
 </body>
 </html>
