@@ -13,24 +13,13 @@
       color: #333;
       font-size: 18px;
       background-color: #f7f9f4;
-      background-image: url("https://i.ibb.co/tpQ4Yh49/Greensleeves-Care-Brand-Ribbon-scaled.webp");
-      background-repeat: no-repeat;
-      background-position: bottom left;
-      background-size: 300px auto;
     }
 
-    /* ---------- Header & Logo ---------- */
+    /* ---------- Header Styles ---------- */
     .header-brand {
-      display: flex;
-      align-items: center;
       margin-bottom: 1rem;
       border-bottom: 2px solid #8b9a73;
       padding-bottom: 1rem;
-    }
-    .header-brand img {
-      width: 90px;
-      height: auto;
-      margin-right: 1rem;
     }
     .header-brand h1 {
       font-size: 1.8rem;
@@ -40,7 +29,7 @@
 
     /* ---------- Multi-Step Form Steps ---------- */
     .form-step {
-      display: none; /* hidden by default */
+      display: none;
       background-color: #fff;
       border: 1px solid #ccc;
       border-radius: 6px;
@@ -49,7 +38,7 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .form-step.active {
-      display: block; /* show the active step */
+      display: block;
     }
     .form-step h2 {
       font-size: 1.4rem;
@@ -87,7 +76,6 @@
       margin-right: 0.5rem;
       transform: scale(1.2);
     }
-    /* read-only fields so users can't overwrite them */
     #age,
     #bmiScore {
       background-color: #f2f2f2;
@@ -118,18 +106,11 @@
       font-size: 1rem;
     }
 
-    /* ---------- Responsive for Mobile (<600px) ---------- */
+    /* ---------- Responsive for Mobile ---------- */
     @media (max-width: 600px) {
       body {
         padding: 8px;
         font-size: 16px;
-      }
-      .header-brand {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .header-brand img {
-        margin-bottom: 1rem;
       }
       .header-brand h1 {
         font-size: 1.6rem;
@@ -147,10 +128,6 @@
 <body>
 
   <div class="header-brand">
-    <img 
-      src="https://i.ibb.co/HL44C8Tw/greensleeves-thumbnail-logo-png-120x120-q50-ALIAS-brand-icon-crop-progressive-subsampling-2-upscale.jpg" 
-      alt="Greensleeves Care Logo"
-    />
     <h1>Resident Assessment Form</h1>
   </div>
 
@@ -293,7 +270,7 @@
       </div>
     </div>
 
-    <!-- STEP 5: MANDATORY CARE PLAN SECTIONS WITH ORIGINAL HINTS -->
+    <!-- STEP 5 -->
     <div class="form-step" id="step-5">
       <h2>Step 5: Mandatory Care Plan Sections</h2>
 
@@ -394,7 +371,7 @@
       </div>
     </div>
 
-    <!-- STEP 6: SPECIALIST CARE PLANS WITH SEPARATE ROWS + HINTS -->
+    <!-- STEP 6 -->
     <div class="form-step" id="step-6">
       <h2>Step 6: Specialist Care Plans (If Applicable)</h2>
 
@@ -529,45 +506,25 @@
       currentStep = index;
     }
 
-    // Show first step on load
     showStep(0);
 
-    // Next/Prev button references
-    const nextBtn1 = document.getElementById('nextBtn1');
-    const nextBtn2 = document.getElementById('nextBtn2'); const prevBtn2 = document.getElementById('prevBtn2');
-    const nextBtn3 = document.getElementById('nextBtn3'); const prevBtn3 = document.getElementById('prevBtn3');
-    const nextBtn4 = document.getElementById('nextBtn4'); const prevBtn4 = document.getElementById('prevBtn4');
-    const nextBtn5 = document.getElementById('nextBtn5'); const prevBtn5 = document.getElementById('prevBtn5');
-    const nextBtn6 = document.getElementById('nextBtn6'); const prevBtn6 = document.getElementById('prevBtn6');
-    const nextBtn7 = document.getElementById('nextBtn7'); const prevBtn7 = document.getElementById('prevBtn7');
-    const nextBtn8 = document.getElementById('nextBtn8'); const prevBtn8 = document.getElementById('prevBtn8');
-    const prevBtn9 = document.getElementById('prevBtn9');
-
-    // Step 1 -> 2
-    if(nextBtn1) nextBtn1.addEventListener('click', () => showStep(1));
-    // Step 2 -> 1 or 3
-    if(nextBtn2) nextBtn2.addEventListener('click', () => showStep(2));
-    if(prevBtn2) prevBtn2.addEventListener('click', () => showStep(0));
-    // Step 3 -> 2 or 4
-    if(nextBtn3) nextBtn3.addEventListener('click', () => showStep(3));
-    if(prevBtn3) prevBtn3.addEventListener('click', () => showStep(1));
-    // Step 4 -> 3 or 5
-    if(nextBtn4) nextBtn4.addEventListener('click', () => showStep(4));
-    if(prevBtn4) prevBtn4.addEventListener('click', () => showStep(2));
-    // Step 5 -> 4 or 6
-    if(nextBtn5) nextBtn5.addEventListener('click', () => showStep(5));
-    if(prevBtn5) prevBtn5.addEventListener('click', () => showStep(3));
-    // Step 6 -> 5 or 7
-    if(nextBtn6) nextBtn6.addEventListener('click', () => showStep(6));
-    if(prevBtn6) prevBtn6.addEventListener('click', () => showStep(4));
-    // Step 7 -> 6 or 8
-    if(nextBtn7) nextBtn7.addEventListener('click', () => showStep(7));
-    if(prevBtn7) prevBtn7.addEventListener('click', () => showStep(5));
-    // Step 8 -> 7 or 9
-    if(nextBtn8) nextBtn8.addEventListener('click', () => showStep(8));
-    if(prevBtn8) prevBtn8.addEventListener('click', () => showStep(6));
-    // Step 9 -> 8
-    if(prevBtn9) prevBtn9.addEventListener('click', () => showStep(7));
+    // Navigation event listeners
+    document.getElementById('nextBtn1').addEventListener('click', () => showStep(1));
+    document.getElementById('prevBtn2').addEventListener('click', () => showStep(0));
+    document.getElementById('nextBtn2').addEventListener('click', () => showStep(2));
+    document.getElementById('prevBtn3').addEventListener('click', () => showStep(1));
+    document.getElementById('nextBtn3').addEventListener('click', () => showStep(3));
+    document.getElementById('prevBtn4').addEventListener('click', () => showStep(2));
+    document.getElementById('nextBtn4').addEventListener('click', () => showStep(4));
+    document.getElementById('prevBtn5').addEventListener('click', () => showStep(3));
+    document.getElementById('nextBtn5').addEventListener('click', () => showStep(5));
+    document.getElementById('prevBtn6').addEventListener('click', () => showStep(4));
+    document.getElementById('nextBtn6').addEventListener('click', () => showStep(6));
+    document.getElementById('prevBtn7').addEventListener('click', () => showStep(5));
+    document.getElementById('nextBtn7').addEventListener('click', () => showStep(7));
+    document.getElementById('prevBtn8').addEventListener('click', () => showStep(6));
+    document.getElementById('nextBtn8').addEventListener('click', () => showStep(8));
+    document.getElementById('prevBtn9').addEventListener('click', () => showStep(7));
 
     /* ===================== AUTO-CALCULATE AGE & BMI ===================== */
     const dobField = document.getElementById('dob');
@@ -576,32 +533,21 @@
     const heightField = document.getElementById('currentHeight');
     const bmiField = document.getElementById('bmiScore');
 
-    // Age from DOB
     dobField.addEventListener('change', () => {
       const dobValue = dobField.value;
-      if(!dobValue) {
-        ageField.value = '';
-        return;
-      }
+      if(!dobValue) return;
       const dobDate = new Date(dobValue);
-      if(isNaN(dobDate.getTime())) {
-        ageField.value = '';
-        return;
-      }
       const diffMs = Date.now() - dobDate.getTime();
       const ageYears = Math.floor(diffMs / (365.25 * 24 * 60 * 60 * 1000));
-      ageField.value = (ageYears >= 0) ? `${ageYears} years` : '';
+      ageField.value = `${ageYears} years`;
     });
 
-    // BMI from Weight/Height
     function recalcBMI() {
       const w = parseFloat(weightField.value);
       const h = parseFloat(heightField.value);
       if(w > 0 && h > 0) {
         const bmi = w / (h*h);
         bmiField.value = bmi.toFixed(1);
-      } else {
-        bmiField.value = '';
       }
     }
     weightField.addEventListener('input', recalcBMI);
@@ -613,255 +559,103 @@
     const summaryArea = document.getElementById('summary');
     const { jsPDF } = window.jspdf;
 
-    // Gather form data
     function getFormData() {
-      const formData = new FormData(document.getElementById('assessmentForm'));
-
-      // Checkboxes
-      const dnacpr = document.getElementById('dnacpr').checked ? 'Yes' : 'No';
-      const dols = document.getElementById('dols').checked ? 'Yes' : 'No';
-      const covid19 = document.getElementById('covid19').checked ? 'Yes' : 'No';
-      const poaHealth = document.getElementById('poaHealth').checked ? 'Yes' : 'No';
-      const poaFinance = document.getElementById('poaFinance').checked ? 'Yes' : 'No';
-      const diabetesFoot = document.getElementById('diabetesFoot').checked ? 'Yes' : 'No';
-      const orthopedicFootwear = document.getElementById('orthopedicFootwear').checked ? 'Yes' : 'No';
-
       return {
-        title: formData.get('title') || '',
-        firstName: formData.get('firstName') || '',
-        lastName: formData.get('lastName') || '',
-        preferredName: formData.get('preferredName') || '',
-        sexAtBirth: formData.get('sexAtBirth') || '',
-        genderIdentity: formData.get('genderIdentity') || '',
-        dob: formData.get('dob') || '',
-        age: formData.get('age') || '',
-        residentPhone: formData.get('residentPhone') || '',
-        residentEmail: formData.get('residentEmail') || '',
-        quickNotes: formData.get('quickNotes') || '',
-        nhsNumber: formData.get('nhsNumber') || '',
-        integrationId: formData.get('integrationId') || '',
-        dnacpr,
-        dols,
-        covid19,
-
-        nokFullName: formData.get('nokFullName') || '',
-        nokRelationship: formData.get('nokRelationship') || '',
-        nokPhone: formData.get('nokPhone') || '',
-        poaHealth,
-        poaFinance,
-
-        dateAdmission: formData.get('dateAdmission') || '',
-        admittedFrom: formData.get('admittedFrom') || '',
-        fundingSource: formData.get('fundingSource') || '',
-
-        allergies: formData.get('allergies') || '',
-        dietaryPreferences: formData.get('dietaryPreferences') || '',
-        emergencyInfo: formData.get('emergencyInfo') || '',
-        clinicalHistory: formData.get('clinicalHistory') || '',
-        medicationList: formData.get('medicationList') || '',
-        currentWeight: formData.get('currentWeight') || '',
-        currentHeight: formData.get('currentHeight') || '',
-        bmiScore: formData.get('bmiScore') || '',
-        weightLoss: formData.get('weightLoss') || '',
-        mustScore: formData.get('mustScore') || '',
-
-        advancedPlanning: formData.get('advancedPlanning') || '',
-        cognition: formData.get('cognition') || '',
-        communication: formData.get('communication') || '',
-        continenceCare: formData.get('continenceCare') || '',
-        emotionalWellbeing: formData.get('emotionalWellbeing') || '',
-        sexuality: formData.get('sexuality') || '',
-        lifeEnrichment: formData.get('lifeEnrichment') || '',
-        medicationManagement: formData.get('medicationManagement') || '',
-        mobilityDexterity: formData.get('mobilityDexterity') || '',
-        nutritionHydration: formData.get('nutritionHydration') || '',
-        oralHealth: formData.get('oralHealth') || '',
-        personalCare: formData.get('personalCare') || '',
-        physicalHealth: formData.get('physicalHealth') || '',
-        skinIntegrity: formData.get('skinIntegrity') || '',
-        sleepingNightCare: formData.get('sleepingNightCare') || '',
-
-        // Step 6 new fields
-        antiCoagulant: formData.get('antiCoagulant') || '',
-        breathing: formData.get('breathing') || '',
-        cancerCare: formData.get('cancerCare') || '',
-        chokingRisk: formData.get('chokingRisk') || '',
-        diabetesCare: formData.get('diabetesCare') || '',
-        epilepsy: formData.get('epilepsy') || '',
-        heartDisease: formData.get('heartDisease') || '',
-        challengingBehaviours: formData.get('challengingBehaviours') || '',
-        moneyManagement: formData.get('moneyManagement') || '',
-        painManagement: formData.get('painManagement') || '',
-        parkinsons: formData.get('parkinsons') || '',
-        smokingAlcohol: formData.get('smokingAlcohol') || '',
-
-        existingFootConditions: formData.get('existingFootConditions') || '',
-        toenailCutting: formData.get('toenailCutting') || '',
-        diabetesFoot,
-        orthopedicFootwear,
-        podiatryVisits: formData.get('podiatryVisits') || '',
-
-        completedBy: formData.get('completedBy') || '',
-        dateCompletion: formData.get('dateCompletion') || '',
-        homeManagerApproval: formData.get('homeManagerApproval') || ''
+        title: document.getElementById('title').value,
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        preferredName: document.getElementById('preferredName').value,
+        sexAtBirth: document.getElementById('sexAtBirth').value,
+        genderIdentity: document.getElementById('genderIdentity').value,
+        dob: document.getElementById('dob').value,
+        age: document.getElementById('age').value,
+        residentPhone: document.getElementById('residentPhone').value,
+        residentEmail: document.getElementById('residentEmail').value,
+        quickNotes: document.getElementById('quickNotes').value,
+        nhsNumber: document.getElementById('nhsNumber').value,
+        integrationId: document.getElementById('integrationId').value,
+        dnacpr: document.getElementById('dnacpr').checked ? 'Yes' : 'No',
+        dols: document.getElementById('dols').checked ? 'Yes' : 'No',
+        covid19: document.getElementById('covid19').checked ? 'Yes' : 'No',
+        nokFullName: document.getElementById('nokFullName').value,
+        nokRelationship: document.getElementById('nokRelationship').value,
+        nokPhone: document.getElementById('nokPhone').value,
+        poaHealth: document.getElementById('poaHealth').checked ? 'Yes' : 'No',
+        poaFinance: document.getElementById('poaFinance').checked ? 'Yes' : 'No',
+        dateAdmission: document.getElementById('dateAdmission').value,
+        admittedFrom: document.getElementById('admittedFrom').value,
+        fundingSource: document.getElementById('fundingSource').value,
+        allergies: document.getElementById('allergies').value,
+        dietaryPreferences: document.getElementById('dietaryPreferences').value,
+        emergencyInfo: document.getElementById('emergencyInfo').value,
+        clinicalHistory: document.getElementById('clinicalHistory').value,
+        medicationList: document.getElementById('medicationList').value,
+        currentWeight: document.getElementById('currentWeight').value,
+        currentHeight: document.getElementById('currentHeight').value,
+        bmiScore: document.getElementById('bmiScore').value,
+        weightLoss: document.getElementById('weightLoss').value,
+        mustScore: document.getElementById('mustScore').value,
+        advancedPlanning: document.getElementById('advancedPlanning').value,
+        cognition: document.getElementById('cognition').value,
+        communication: document.getElementById('communication').value,
+        continenceCare: document.getElementById('continenceCare').value,
+        emotionalWellbeing: document.getElementById('emotionalWellbeing').value,
+        sexuality: document.getElementById('sexuality').value,
+        lifeEnrichment: document.getElementById('lifeEnrichment').value,
+        medicationManagement: document.getElementById('medicationManagement').value,
+        mobilityDexterity: document.getElementById('mobilityDexterity').value,
+        nutritionHydration: document.getElementById('nutritionHydration').value,
+        oralHealth: document.getElementById('oralHealth').value,
+        personalCare: document.getElementById('personalCare').value,
+        physicalHealth: document.getElementById('physicalHealth').value,
+        skinIntegrity: document.getElementById('skinIntegrity').value,
+        sleepingNightCare: document.getElementById('sleepingNightCare').value,
+        antiCoagulant: document.getElementById('antiCoagulant').value,
+        breathing: document.getElementById('breathing').value,
+        cancerCare: document.getElementById('cancerCare').value,
+        chokingRisk: document.getElementById('chokingRisk').value,
+        diabetesCare: document.getElementById('diabetesCare').value,
+        epilepsy: document.getElementById('epilepsy').value,
+        heartDisease: document.getElementById('heartDisease').value,
+        challengingBehaviours: document.getElementById('challengingBehaviours').value,
+        moneyManagement: document.getElementById('moneyManagement').value,
+        painManagement: document.getElementById('painManagement').value,
+        parkinsons: document.getElementById('parkinsons').value,
+        smokingAlcohol: document.getElementById('smokingAlcohol').value,
+        existingFootConditions: document.getElementById('existingFootConditions').value,
+        toenailCutting: document.getElementById('toenailCutting').value,
+        diabetesFoot: document.getElementById('diabetesFoot').checked ? 'Yes' : 'No',
+        orthopedicFootwear: document.getElementById('orthopedicFootwear').checked ? 'Yes' : 'No',
+        podiatryVisits: document.getElementById('podiatryVisits').value,
+        completedBy: document.getElementById('completedBy').value,
+        dateCompletion: document.getElementById('dateCompletion').value,
+        homeManagerApproval: document.getElementById('homeManagerApproval').value
       };
     }
 
-    function createSummaryText(d) {
-      return `
-*** General Information ***
-Title: ${d.title}
-First Name: ${d.firstName}
-Last Name: ${d.lastName}
-Preferred Name: ${d.preferredName}
-Sex at Birth: ${d.sexAtBirth}
-Gender Identity: ${d.genderIdentity}
-DOB: ${d.dob}
-Age: ${d.age}
-Resident Phone: ${d.residentPhone}
-Resident Email: ${d.residentEmail}
-Quick Notes: ${d.quickNotes}
-NHS/CHI Number: ${d.nhsNumber}
-Integration ID: ${d.integrationId}
-DNACPR: ${d.dnacpr}
-DoLS: ${d.dols}
-Treating as COVID-19: ${d.covid19}
+    generateSummaryBtn.addEventListener('click', () => {
+      const data = getFormData();
+      summaryArea.value = Object.entries(data)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join('\n\n');
+    });
 
-*** Circle of Care ***
-Next of Kin: ${d.nokFullName}
-Relationship: ${d.nokRelationship}
-Phone: ${d.nokPhone}
-POA for Health: ${d.poaHealth}
-POA for Finance: ${d.poaFinance}
-
-*** Onboarding & Needs Assessment ***
-Date of Admission: ${d.dateAdmission}
-Admitted From: ${d.admittedFrom}
-Funding Source: ${d.fundingSource}
-
-*** Clinical Information ***
-Allergies & Intolerances: ${d.allergies}
-Dietary Preferences & Nutrition Needs: ${d.dietaryPreferences}
-Emergency Info & Admission Decision: ${d.emergencyInfo}
-Clinical History & Medical Conditions: ${d.clinicalHistory}
-Medication List: ${d.medicationList}
-MUST:
-  Weight (kg): ${d.currentWeight}
-  Height (m): ${d.currentHeight}
-  BMI Score: ${d.bmiScore}
-  Weight Loss in Past 3-6 Months (%): ${d.weightLoss}
-  Overall MUST Score: ${d.mustScore}
-
-*** Mandatory Care Plan Sections ***
-Advanced Planning (EOL): ${d.advancedPlanning}
-Cognition: ${d.cognition}
-Communication: ${d.communication}
-Continence Care: ${d.continenceCare}
-Emotional Well-being & Mental Health: ${d.emotionalWellbeing}
-Expressing Sexuality: ${d.sexuality}
-Life Enrichment & Social Activities: ${d.lifeEnrichment}
-Medication Management: ${d.medicationManagement}
-Mobility & Dexterity: ${d.mobilityDexterity}
-Nutrition & Hydration: ${d.nutritionHydration}
-Oral Health Care: ${d.oralHealth}
-Personal Care & Hygiene: ${d.personalCare}
-Physical Health & Well-being: ${d.physicalHealth}
-Skin Integrity & Pressure Care: ${d.skinIntegrity}
-Sleeping & Night Care: ${d.sleepingNightCare}
-
-*** Specialist Care Plans (If Applicable) ***
-Anti-Coagulant Management: ${d.antiCoagulant}
-Breathing (COPD/Asthma): ${d.breathing}
-Cancer Care: ${d.cancerCare}
-Choking Risk & SALT: ${d.chokingRisk}
-Diabetes Care & Foot Health: ${d.diabetesCare}
-Epilepsy Management: ${d.epilepsy}
-Heart Disease & Stroke Recovery: ${d.heartDisease}
-Managing Behaviours that Challenge: ${d.challengingBehaviours}
-Money Management Support: ${d.moneyManagement}
-Pain Management Plan: ${d.painManagement}
-Parkinson’s Care: ${d.parkinsons}
-Smoking/Alcohol/Drug Use: ${d.smokingAlcohol}
-
-*** Foot Care Assessment ***
-Existing Foot Conditions: ${d.existingFootConditions}
-Toenail Cutting Needs: ${d.toenailCutting}
-Diabetes Foot Concerns: ${d.diabetesFoot}
-Orthopedic Footwear: ${d.orthopedicFootwear}
-Podiatry Visits: ${d.podiatryVisits}
-
-*** Staff Sign-Off ***
-Assessment Completed By: ${d.completedBy}
-Date of Completion: ${d.dateCompletion}
-Home Manager Approval: ${d.homeManagerApproval}
-`;
-    }
-
-    if(generateSummaryBtn) {
-      generateSummaryBtn.addEventListener('click', () => {
-        const data = getFormData();
-        const summaryArea = document.getElementById('summary');
-        summaryArea.value = createSummaryText(data);
-      });
-    }
-
-    if(downloadPdfBtn) {
-      downloadPdfBtn.addEventListener('click', () => {
-        const data = getFormData();
-        const lines = createSummaryText(data).split('\n');
-
-        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-        const pageHeight = doc.internal.pageSize.getHeight();
-
-        function drawHeader() {
-          const pageWidth = doc.internal.pageSize.getWidth();
-          doc.setFillColor(92,158,173);
-          doc.rect(0, 0, pageWidth, 40, 'F');
-          doc.setFont('Helvetica', 'bold');
-          doc.setFontSize(18);
-          doc.setTextColor(255,255,255);
-          doc.text('Resident Assessment Form', 20, 26);
-          doc.setFont('Helvetica', 'normal');
-          doc.setFontSize(12);
-          doc.setTextColor(0,0,0);
+    downloadPdfBtn.addEventListener('click', () => {
+      const data = getFormData();
+      const doc = new jsPDF();
+      let y = 20;
+      
+      Object.entries(data).forEach(([key, value]) => {
+        if(y > 280) {
+          doc.addPage();
+          y = 20;
         }
-
-        drawHeader();
-        let x = 20;
-        let y = 60;
-        const lineHeight = 14;
-
-        lines.forEach(line => {
-          if(y > pageHeight - 40) {
-            doc.addPage();
-            drawHeader();
-            y = 60;
-          }
-          if(line.startsWith('*** ')) {
-            doc.setFont('Helvetica', 'bold');
-            doc.setFontSize(13);
-            doc.text(line.replace('*** ','') , x, y);
-            doc.setFont('Helvetica', 'normal');
-            doc.setFontSize(12);
-          } else {
-            const splitted = doc.splitTextToSize(line, 550);
-            splitted.forEach(str => {
-              doc.text(str, x, y);
-              y += lineHeight;
-              if(y > pageHeight - 40) {
-                doc.addPage();
-                drawHeader();
-                y = 60;
-              }
-            });
-            y -= lineHeight;
-          }
-          y += lineHeight;
-        });
-
-        doc.save('Resident_Assessment.pdf');
+        doc.text(`${key}: ${value}`, 10, y);
+        y += 10;
       });
-    }
+      
+      doc.save('assessment.pdf');
+    });
   </script>
 </body>
 </html>
